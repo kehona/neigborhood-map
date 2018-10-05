@@ -18,6 +18,10 @@
   color: white;
 }
 
+#map {
+  min-height: 100vh;
+}
+
 .App-link {
   color: #61dafb;
 }
