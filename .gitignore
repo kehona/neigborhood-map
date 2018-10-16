@@ -5,6 +5,7 @@
 
 # testing
 /coverage
+/src/config/prod.js
 
 # production
 /build
