@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import config from "./config";
-import "./App.css";
 
-class App extends Component {
+import config from "../config";
+
+class Map extends Component {
   componentDidMount() {
     this.loadGoogleScript();
   }
@@ -35,7 +34,7 @@ class App extends Component {
   }
 
   createMapScript() {
-    let key = config.API_KEY || "AIzaSyDj-mVCQVweG9KZwqFFGITxLIAqyAATzYI";
+    let key = "AIzaSyANGV56zbtmOCV18Jc86m9oBoNQHB4iyKg";
     const src = `https://maps.googleapis.com/maps/api/js?key=${key}&callback=initMap`;
     let mapScript = document.createElement("script");
     mapScript.src = src;
@@ -43,14 +42,9 @@ class App extends Component {
     mapScript.defer = true;
     return mapScript;
   }
-
   render() {
-    return (
-      <div className="App">
-        <div id="map" />
-      </div>
-    );
+    return <div id="map" />;
   }
 }
 
-export default App;
+export default Map;

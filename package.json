@@ -1,26 +1,39 @@
 {
   "name": "neigborhood-app",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "dotenv": "^6.1.0",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "react-scripts": "2.0.4"
-  },
+  "version": "1.0.0",
+  "description": "Udacity project 7",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "server": "nodemon server.js",
+    "client": "npm run start --prefix=client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kenodipe/neigborhood-map.git"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "keywords": [
+    "react",
+    "reactjs",
+    "frontend",
+    "web",
+    "developer",
+    "project",
+    "7",
+    "neighborhood",
+    "app"
+  ],
+  "author": "Kehinde Onadipe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kenodipe/neigborhood-map/issues"
+  },
+  "homepage": "https://github.com/kenodipe/neigborhood-map#readme",
+  "dependencies": {
+    "concurrently": "^4.0.1",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.4",
+    "request": "^2.88.0"
+  }
 }
