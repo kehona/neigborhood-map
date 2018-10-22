@@ -22,19 +22,15 @@ footer {
 }
 
 #list-section {
-  position: absolute;
-  z-index: 1;
-}
-
-#list-section {
   float: left;
   height: 100%;
   background-color: #fff;
-  border: 1px solid grey;
   width: 30%;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 5px;
+  z-index: 1;
+  box-shadow: 2px 2px 2px 2px grey;
 }
 #map {
   min-height: 100vh;
