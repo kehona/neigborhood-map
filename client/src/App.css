@@ -5,7 +5,7 @@
 
 /*** Header **/
 header {
-  color: #D95040;
+  color: #d95040;
 }
 
 #title {
@@ -31,6 +31,27 @@ footer {
   left: 5px;
   z-index: 1;
   box-shadow: 2px 2px 2px 2px grey;
+  padding-left: 10px 10px;
+  overflow-y: scroll;
+}
+
+.location-details {
+  border-bottom: 1px solid grey;
+  padding: 10px;
+}
+
+.title {
+
+}
+.info {
+  font-size: 14px;
+}
+input {
+  border-radius: 5px;
+  font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 10px 10px;
+  padding: 5px 8px;
+  width: 70%;
 }
 #map {
   min-height: 100vh;
