@@ -35,7 +35,7 @@ class Map extends Component {
       infoWindow.open(map, marker);
     });
 
-    // for (let i = 0; i < this.locations.length; i++) {
+    // for (let i = 0; i < locations.length; i++) {
     //   let marker = new window.google.maps.Marker({
     //     position: {
     //       lat: locations[i].venue.location.lat,
@@ -44,7 +44,13 @@ class Map extends Component {
     //     map: map,
     //     title: locations[i].venue.name
     //   });
-    //   markers.push(marker);
+    //   let infoWindow = new window.google.maps.InfoWindow({
+    //     content: "This is a newighorhood market!"
+    //   });
+
+    //   marker.addListener("click", function() {
+    //     infoWindow.open(map, marker);
+    //   });
     // }
   }
 
