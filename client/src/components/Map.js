@@ -3,36 +3,24 @@ import React, { Component } from "react";
 import config from "../config";
 
 class Map extends Component {
-  constructor(props) {
-    super(props);
-    this.locations = props.locations;
-  }
-  componentDidMount() {
+  componentDidUpdate() {
+    this.loadGoogleScript();
   }
 
-  loadGoogleScript(locations) {
+  loadGoogleScript() {
+    console.log("hereeee", this.props.locations);
+    let locations = this.props.locations;
     let script = document.getElementsByTagName("script")[0];
     const mapScript = this.createMapScript();
     script.parentNode.insertBefore(mapScript, script);
-    window.initMap = this.initMap();
+    window.initMap = this.initMap;
   }
   initMap() {
-    console.log(this.locations)
     let markers = [];
     let map = new window.google.maps.Map(document.getElementById("map"), {
+      center: { lat: 36.3729, lng: -94.208 },
       zoom: 13
     });
-    for (let i = 0; i < this.locations.length; i++) {
-      let marker = new window.google.maps.Marker({
-        position: {
-          lat: this.locations[i].venue.location.lat,
-          lng: this.locations[i].venue.location.lng
-        },
-        map: map,
-        title: this.locations[i].venue.name
-      });
-      markers.push(marker);
-    }
 
     let walmart = { lat: 36.358498566, lng: -94.209832494 };
     let marker = new window.google.maps.Marker({
@@ -46,6 +34,18 @@ class Map extends Component {
     marker.addListener("click", function() {
       infoWindow.open(map, marker);
     });
+
+    // for (let i = 0; i < this.locations.length; i++) {
+    //   let marker = new window.google.maps.Marker({
+    //     position: {
+    //       lat: locations[i].venue.location.lat,
+    //       lng: locations[i].venue.location.lng
+    //     },
+    //     map: map,
+    //     title: locations[i].venue.name
+    //   });
+    //   markers.push(marker);
+    // }
   }
 
   createMapScript() {
@@ -58,7 +58,6 @@ class Map extends Component {
     return mapScript;
   }
   render() {
-    console.log(this.props.locations);
     return <div id="map" />;
   }
 }

@@ -25,7 +25,6 @@ class App extends Component {
       <div className="App">
         <Header />
         <Content data={this.state.data}/>
-        <Footer />
       </div>
     );
   }
