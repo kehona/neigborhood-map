@@ -4,12 +4,11 @@ import List from "./List";
 
 class Content extends Component {
   render() {
-    const data = this.props.data;
     return (
-      <section id="content" className="row">
-        <List locations={data} />
-        <Map locations={data}/>
-      </section>
+      <div id="content">
+        <List />
+        <Map />
+      </div>
     );
   }
 }
