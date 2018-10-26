@@ -8,7 +8,6 @@ import Content from "./components/Content";
 import Footer from "./components/Footer";
 
 class App extends Component {
-
   loadMap() {
     this.locations = this.props.locations;
     let script = document.getElementsByTagName("script")[0];
@@ -28,14 +27,13 @@ class App extends Component {
   }
 
   initMap = () => {
-
     let map = new window.google.maps.Map(document.getElementById("map"), {
       center: { lat: 36.3729, lng: -94.208 },
       zoom: 12
     });
     window.mapObject = map;
-
   };
+
   render() {
     this.loadMap();
     return (

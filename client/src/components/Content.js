@@ -7,31 +7,40 @@ class Content extends Component {
     super(props);
     this.state = {
       data: [],
-      query: ""
+      query: "",
+      queryResult: []
     };
     this.handleChange = this.handleChange.bind(this);
   }
   componentDidMount() {
     fetch("http://localhost:8080/locations")
       .then(res => res.json())
-      .then(data => this.setState({ data: data }));
+      .then(data => this.setState({ data: data, queryResult: data }));
   }
 
   handleChange = query => {
     this.setState({ query });
+    const data = this.state.data;
+    if (query) {
+      this.setState({ queryResult: this.filterData(this.state.data, query) });
+    } else {
+      this.setState({ queryResult: this.state.data });
+    }
   };
 
-  render() {
-    const data = this.props.data;
+  filterData(data = [], query) {
+    return data.filter(location => location.venue.name.includes(query));
+  }
 
+  render() {
     return (
       <section id="content" className="row">
         <List
-          locations={this.state.data}
+          locations={this.state.queryResult}
           queryString={this.state.query}
           handleChange={this.handleChange}
         />
-        <Map locations={this.state.data} map={this.props.map} />
+        <Map locations={this.state.queryResult} map={this.props.map} />
       </section>
     );
   }
