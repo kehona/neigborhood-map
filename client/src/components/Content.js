@@ -54,10 +54,16 @@ class Content extends Component {
   };
 
   prepareInfoContent(location) {
-    return `<h3>Name: ${location.venue.name}</h3>
-          <h4>Type: ${location.venue.categories[0].name}</h4>
-          <h4>Address: ${location.venue.location.address}</h4>
-          <h4>City: ${location.venue.location.city}`;
+    return `<div class="infoWindow">
+            <h3>Name: <span class="info-name">${location.venue.name}<spam></h3>
+            <p class="info-title">Type: ${
+              location.venue.categories[0].name
+            }</p>
+            <p class="info-title">Address: ${
+              location.venue.location.address
+            }</p>
+            <p class="info-title">City: ${location.venue.location.city}</p>
+          </div>`;
   }
 
   render() {

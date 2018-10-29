@@ -39,13 +39,25 @@ li {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+  color: #0f6caa;
+}
+
 .location-details {
   border-bottom: 1px solid grey;
   padding: 10px;
 }
 
-.title {
+.info-name {
+  color: #0f6caa;
+  padding-bottom: 5px;
+}
+.info-title {
+  font-weight: 400;
+}
 
+.title {
 }
 .info {
   font-size: 14px;
