@@ -6,31 +6,34 @@ class Map extends Component {
   componentDidUpdate() {}
   markers = [];
   updateMarkers = locations => {
-    console.log(locations);
-    this.markers = [];
-    console.log("am herere", window.google);
-    // let infoWindow = new window.google.maps.InfoWindow();
-    for (let i = 0; i < locations.length; i++) {
-      let marker = new window.google.maps.Marker({
-        position: {
-          lat: locations[i].venue.location.lat,
-          lng: locations[i].venue.location.lng
-        },
-        map: window.mapObject,
-        title: locations[i].venue.id // locations[i].venue.name
-      });
-      // let infoWindow = new window.google.maps.InfoWindow({ maxWidth: 150 });
-      marker.addListener("click", () => {
-        console.log(this.props);
-        let content = this.props.getInfoContent(locations[i]);
+    if (window.google) {
+      this.markers = [];
+      let bounds = new window.google.maps.LatLngBounds();
+      // let infoWindow = new window.google.maps.InfoWindow();
+      for (let i = 0; i < locations.length; i++) {
+        let marker = new window.google.maps.Marker({
+          position: {
+            lat: locations[i].venue.location.lat,
+            lng: locations[i].venue.location.lng
+          },
+          animation: window.google.maps.Animation.DROP,
+          map: window.mapObject,
+          title: locations[i].venue.id // locations[i].venue.name
+        });
+        // let infoWindow = new window.google.maps.InfoWindow({ maxWidth: 150 });
+        marker.addListener("click", () => {
+          marker.setAnimation(window.google.maps.Animation.BOUNCE);
+          let content = this.props.getInfoContent(locations[i]);
 
-        window.infoWindow.setContent(content);
-        window.infoWindow.open(window.mapObject, marker);
-      });
+          window.infoWindow.setContent(content);
+          window.infoWindow.open(window.mapObject, marker);
+        });
 
-      this.markers.push(marker);
+        this.markers.push(marker);
+        bounds.extend(marker.position);
+      }
+      window.markers = this.markers;
     }
-    window.markers = this.markers;
   };
 
   // Sets the map on all markers in the array.
