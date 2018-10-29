@@ -3,10 +3,13 @@ import React, { Component } from "react";
 import config from "../config";
 
 class Map extends Component {
+  componentDidUpdate() {}
   markers = [];
   updateMarkers = locations => {
     console.log(locations);
     this.markers = [];
+    console.log("am herere", window.google);
+    // let infoWindow = new window.google.maps.InfoWindow();
     for (let i = 0; i < locations.length; i++) {
       let marker = new window.google.maps.Marker({
         position: {
@@ -14,16 +17,20 @@ class Map extends Component {
           lng: locations[i].venue.location.lng
         },
         map: window.mapObject,
-        title: locations[i].venue.name
+        title: locations[i].venue.id // locations[i].venue.name
       });
-      let infoWindow = new window.google.maps.InfoWindow({
-        content: "This is a newighorhood market!"
+      // let infoWindow = new window.google.maps.InfoWindow({ maxWidth: 150 });
+      marker.addListener("click", () => {
+        console.log(this.props);
+        let content = this.props.getInfoContent(locations[i]);
+
+        window.infoWindow.setContent(content);
+        window.infoWindow.open(window.mapObject, marker);
       });
+
       this.markers.push(marker);
-      marker.addListener("click", function() {
-        infoWindow.open(window.mapObject, marker);
-      });
     }
+    window.markers = this.markers;
   };
 
   // Sets the map on all markers in the array.

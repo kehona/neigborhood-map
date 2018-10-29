@@ -17,7 +17,16 @@ class List extends Component {
             {this.props.locations.map(location => (
               <li key={location.venue.id}>
                 <div className="location-details">
-                  <p className="title">{location.venue.name}</p>
+                  <p className="title">
+                    <a
+                      href="#"
+                      onClick={() =>
+                        this.props.handleClick(location, window.markers)
+                      }
+                    >
+                      {location.venue.name}
+                    </a>
+                  </p>
                   <p className="info">
                     Address: {location.venue.location.address}
                   </p>
