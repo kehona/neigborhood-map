@@ -10,6 +10,16 @@ header {
 
 #title {
   text-transform: uppercase;
+  display: inline-block;
+  width: 70%;
+}
+
+header i {
+  float: right;
+  font-size: 1.5rem;
+  display: inline-block;
+  padding-top: 10px;
+  color: #d95040;
 }
 
 footer {
@@ -17,6 +27,7 @@ footer {
 
 /*** Content **/
 #content {
+  clear: both;
   width: "100vw";
   position: relative;
 }
@@ -33,6 +44,18 @@ footer {
   box-shadow: 2px 2px 2px 2px grey;
   padding: 10px 10px;
   overflow-y: scroll;
+}
+
+@media only screen and (max-width: 920px) {
+  #list-section {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  #list-section {
+    width: 75%;
+  }
 }
 
 li {
