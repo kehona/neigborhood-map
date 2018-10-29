@@ -14,7 +14,9 @@ This is one of the projects for Udacity Nanodegree program. It's an app that sho
 To get the app running,
 
 - install all project dependencies with `npm install`
-- start the development server with `npm run dev`
+- start the development server with `npm run dev`. This will start both the client server and the backend server on different ports. **_NB:_** To run only the client server, run `npm run client`. To run only the backend server, run `npm run server`.
+
+To run the app in production, run `npm run prod`.
 
 ## Code structure
 

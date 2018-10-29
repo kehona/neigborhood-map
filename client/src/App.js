@@ -12,6 +12,9 @@ class App extends Component {
     let script = document.getElementsByTagName("script")[0];
     const mapScript = this.createMapScript();
     script.parentNode.insertBefore(mapScript, script);
+    mapScript.onerror = function() {
+      alert("Error loading google map" + this.src);
+    };
     window.initMap = this.initMap;
   }
 

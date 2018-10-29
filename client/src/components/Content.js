@@ -19,6 +19,9 @@ class Content extends Component {
       .then(data => {
         // let markers = this.createMarkers(data);
         this.setState({ data: data, queryResult: data });
+      })
+      .catch(e => {
+        alert("Oops! There's an error loading map location data!");
       });
   }
 

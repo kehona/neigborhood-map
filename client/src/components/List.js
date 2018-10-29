@@ -9,6 +9,7 @@ class List extends Component {
           <h5> Wifi locations in your neighorhood</h5>
           <input
             type="text"
+            aria-label="input to filter locations"
             placeholder="Search by location"
             value={this.props.queryString}
             onChange={e => this.props.handleChange(e.target.value)}

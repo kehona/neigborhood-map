@@ -15,7 +15,7 @@ class Header extends Component {
       <header id="pageHeader" className="row">
         <h1 id="title">Ken's Cafe</h1>
         <a href="#" onClick={this.handleClick} role="button">
-          <i className="fa fa-bars" aria-hidden="true" />
+          <i className="fa fa-bars" aria-hidden="true" aria-label="menu" />
         </a>
       </header>
     );
