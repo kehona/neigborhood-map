@@ -22,9 +22,11 @@ class Map extends Component {
         });
         // let infoWindow = new window.google.maps.InfoWindow({ maxWidth: 150 });
         marker.addListener("click", () => {
-          marker.setAnimation(window.google.maps.Animation.BOUNCE);
           let content = this.props.getInfoContent(locations[i]);
-
+          marker.setAnimation(window.google.maps.Animation.BOUNCE);
+          setTimeout(function() {
+            marker.setAnimation(null);
+          }, 300);
           window.infoWindow.setContent(content);
           window.infoWindow.open(window.mapObject, marker);
         });

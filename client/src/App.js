@@ -32,7 +32,7 @@ class App extends Component {
       center: { lat: 36.3729, lng: -94.208 },
       zoom: 12
     });
-    const infoWindow = new window.google.maps.InfoWindow({ maxWidth: 150 });
+    const infoWindow = new window.google.maps.InfoWindow();
     window.infoWindow = infoWindow;
     window.mapObject = map;
   };

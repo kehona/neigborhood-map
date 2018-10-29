@@ -21,34 +21,7 @@ class Content extends Component {
         // let markers = this.createMarkers(data);
         this.setState({ data: data, queryResult: data });
       });
-    // create info window
   }
-  componentDidUpdate() {
-    this.infoWindow = new window.google.maps.InfoWindow({ maxWidth: 150 });
-  }
-
-  // createMarkers = locations => {
-  //   console.log(locations);
-  //   let markers = [];
-  //   for (let i = 0; i < locations.length; i++) {
-  //     let marker = new window.google.maps.Marker({
-  //       position: {
-  //         lat: locations[i].venue.location.lat,
-  //         lng: locations[i].venue.location.lng
-  //       },
-  //       map: window.mapObject,
-  //       title: locations[i].venue.name
-  //     });
-  //     let infoWindow = new window.google.maps.InfoWindow({
-  //       content: "This is a newighorhood market!"
-  //     });
-  //     this.markers.push(marker);
-  //     marker.addListener("click", function() {
-  //       infoWindow.open(window.mapObject, marker);
-  //     });
-  //   }
-  //   return markers;
-  // };
 
   handleChange = query => {
     this.setState({ query });
@@ -69,6 +42,10 @@ class Content extends Component {
     for (let i = 0; i < markers.length; i++) {
       if (location.venue.id === markers[i].getTitle()) {
         let content = this.prepareInfoContent(location);
+        markers[i].setAnimation(window.google.maps.Animation.BOUNCE);
+        setTimeout(function() {
+          markers[i].setAnimation(null);
+        }, 300);
         window.infoWindow.setContent(content);
         window.infoWindow.open(window.mapObject, markers[i]);
         markers[i].open = true;
@@ -77,7 +54,10 @@ class Content extends Component {
   };
 
   prepareInfoContent(location) {
-    return `<h2>${location.venue.name}</h2>`;
+    return `<h3>Name: ${location.venue.name}</h3>
+          <h4>Type: ${location.venue.categories[0].name}</h4>
+          <h4>Address: ${location.venue.location.address}</h4>
+          <h4>City: ${location.venue.location.city}`;
   }
 
   render() {
