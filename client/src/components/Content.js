@@ -36,8 +36,11 @@ class Content extends Component {
   displayInfoWindow() {}
 
   filterData(data = [], query) {
-    return data.filter(location => location.venue.name.includes(query));
+    return data.filter(location =>
+      location.venue.name.toLowerCase().includes(query.toLowerCase())
+    );
   }
+
   handleClick = (location, markers) => {
     for (let i = 0; i < markers.length; i++) {
       if (location.venue.id === markers[i].getTitle()) {
@@ -53,12 +56,13 @@ class Content extends Component {
     }
   };
 
+  /**
+   * creates the content for infoWindow for a given location
+   */
   prepareInfoContent(location) {
     return `<div class="infoWindow">
             <h3>Name: <span class="info-name">${location.venue.name}<spam></h3>
-            <p class="info-title">Type: ${
-              location.venue.categories[0].name
-            }</p>
+            <p class="info-title">Type: ${location.venue.categories[0].name}</p>
             <p class="info-title">Address: ${
               location.venue.location.address
             }</p>
