@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-import config from "../config";
-
 class Map extends Component {
   componentDidUpdate() {}
   markers = [];

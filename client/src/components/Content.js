@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Map from "./Map";
 import List from "./List";
-import { runInThisContext } from "vm";
 
 class Content extends Component {
   constructor(props) {
@@ -25,7 +24,6 @@ class Content extends Component {
 
   handleChange = query => {
     this.setState({ query });
-    const data = this.state.data;
     if (query) {
       this.setState({ queryResult: this.filterData(this.state.data, query) });
     } else {

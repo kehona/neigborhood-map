@@ -13,13 +13,14 @@ class List extends Component {
             value={this.props.queryString}
             onChange={e => this.props.handleChange(e.target.value)}
           />
-          <ol>
+          <ol role="list">
             {this.props.locations.map(location => (
-              <li key={location.venue.id}>
+              <li key={location.venue.id} role="listitem">
                 <div className="location-details">
                   <p className="title">
                     <a
                       href="#"
+                      role="link"
                       onClick={() =>
                         this.props.handleClick(location, window.markers)
                       }
